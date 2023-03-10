@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>iframe iframe test</title>
+<script type="text/javascript">
+	fetch("https://app.parchaa.com")
+  .then(response => {console.log(response);return response.text()})
+  .then(html => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    
+	document.head.insertAdjacentHTML("beforeend",doc.head.innerHTML);
+    document.body.insertAdjacentHTML('beforeend',doc.body.innerHTML);
+
+  })
+  .catch(error => console.log(error));
+
+</script>
 </head>
 <body>
-	<iframe src="https://app.parchaa.com/version-raju-25-2/doctor_parchaa_index" title="login page" style="width:500px;height:500px;" sandbox></iframe>
+	<div id = 'hi'></div>
 
-	
-</script>
 </body>
 </html>
